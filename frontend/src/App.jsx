@@ -5,16 +5,21 @@ import MoodSongs from './components/MoodSongs'
 
 function App() {
 
-  const [ Songs, setSongs ] = useState([
-       
-    ])
+  const [ Songs, setSongs ] = useState([]);
 
   return (
-    <>
-      <FacialExpression setSongs={setSongs} />
-      <MoodSongs Songs={Songs} />
-    </>
+    <div className="app-container">
+      <div className="background-overlay"></div>
+      <div className="content-wrapper">
+        <header className="app-header">
+          <h1 className="app-title">🎵 MoodTune</h1>
+          <p className="app-subtitle">Discover music that matches your emotions</p>
+        </header>
+        <FacialExpression setSongs={setSongs} />
+        <MoodSongs Songs={Songs} />
+      </div>
+    </div>
   )
-}
+};
 
-export default App
+export default App;

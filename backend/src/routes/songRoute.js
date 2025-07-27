@@ -5,7 +5,7 @@ const router = express.Router();
 const multer = require('multer');
 const upload = multer({storage:multer.memoryStorage()});
 
-const uploadFile = require('../service/storageService.js');
+const uploadFile = require('../services/storageService.js');
 
 const songModel = require("../models/songModel.js");
 
@@ -30,18 +30,16 @@ router.post('/songs',upload.single("audio"),async (req,res)=>{
 })
 
 router.get('/songs',async(req,res)=>{
-    const {mood} = req.query; /* mood = sad */
+    const { mood } = req.query; /* mood = sad */
 
-    const songs = await songModel.find({
-        mood: mood
-    })
+    const songs = await songModel.find({ mood: mood });
 
     res.status(200).json({
         message:"Songs fetched successfully",
         songs
-    })
+    });
     
-})
+});
 
 
 
